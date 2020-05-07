@@ -1,0 +1,48 @@
+oc delete istag/jboss-webserver31-tomcat8-openshift -n openshift
+
+oc delete is jboss-webserver31-tomcat8-openshift -n openshift
+
+minishift start --vm-driver virtualbox
+
+kubectl create -f C:\Users\phand\OneDrive\Desktop\12941562_phanducthinh-secret.yaml --namespace=NAMESPACEHERE
+
+oc create -f C:\Users\phand\OneDrive\Desktop\jws31-tomcat8-basic-s2i.json
+
+oc create -f C:\Users\phand\OneDrive\Desktop\jws31-tomcat8-image-stream.json -n openshift
+
+oc get svc -n default (Get docker-registry)
+
+oc expose svc docker-registry -n default
+
+oc delete jboss-webserver31-tomcat8-openshift:1.0
+oc delete istag/jboss-webserver31-tomcat8-openshift:1.0
+
+oc create -f C:\Users\phand\OneDrive\Desktop\jws31-tomcat8-image-stream.json -n openshift
+
+docker pull registry.redhat.io/jboss-webserver-3/webserver31-tomcat8-openshift:1.0
+
+oc get templates -n openshift
+
+oc get imagestream -n openshift
+
+oc login -u system:admin
+
+oc create -f C:\Users\phand\OneDrive\Desktop\Openshift\jws31-tomcat8-image-stream.json -n openshift
+
+docker login docker-registry-default.192.168.99.101.nip.io -p $(oc whoami -t) -u developer
+
+oc login https://192.168.99.101:8443 --token=K0gZPuGXPC-X9CdQ-hlRLmi1UpmdHPNLkoY4ab6aUTo
+
+minishift ssh
+
+oc create -f C:\Users\phand\.minishift\addons\xpaas\v3.11\xpaas-templates\jws31-tomcat7-basic-s2i.json -n openshift
+
+oc create secret generic imagestreamsecret \--from-file=.dockerconfigjson=<path/to/.docker/config.json> \--type=kubernetes.io/dockerconfigjson"
+
+minishift delete
+
+oc create -f /usr/share/ansible/openshift-ansible/roles/openshift_examples/files/examples/v1.1/xpaas-streams/jboss-image-streams.json -n openshift
+
+172.30.1.1:5000/tomcat-demo/spring-demo
+
+oc adm policy add-cluster-role-to-user cluster-admin thinh
